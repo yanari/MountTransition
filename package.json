@@ -1,6 +1,6 @@
 {
   "name": "mount-transition",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": {
     "name": "Marcelle Yanari",
     "email": "yanarimy@gmail.com"
@@ -45,6 +45,10 @@
   "main": "dist/index.js",
   "module": "dist/index.js",
   "babel": {
-    "presets": [ "react", "env", "stage-2" ]
+    "presets": [
+      "react",
+      "env",
+      "stage-2"
+    ]
   }
 }
