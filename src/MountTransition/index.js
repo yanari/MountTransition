@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {animated, Transition} from 'react-spring/renderprops';
+import {presets} from './presets';
 
 function MountTransition (props) {
   const {
@@ -10,24 +11,6 @@ function MountTransition (props) {
     show,
     tag,
   } = props;
-  const presets = {
-    fadeInOut: {
-      atEnter: {opacity: 1},
-      atFrom: {opacity: 0},
-      atLeave: {opacity: 0},
-    },
-    slideTop: {
-      atEnter: {transform: 'translateY(0%)'},
-      atFrom: {transform: 'translateY(-100%)'},
-      atLeave: {transform: 'translateY(-100%)'},
-    },
-    toggle: {
-      atEnter: {height: '100%'},
-      atFrom: {height: '0%'},
-      atInitial: {height: '0%'},
-      atLeave: {height: '0%'},
-    },
-  };
   return (
     <Transition
       enter = {presets[preset].atEnter}
@@ -56,10 +39,10 @@ function MountTransition (props) {
 }
 
 MountTransition.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
   className: PropTypes.string,
-  preset: PropTypes.oneOf(['fadeInOut', 'toggle', 'toggleFadeInOut']).isRequired,
-  show: PropTypes.bool,
+  preset: PropTypes.oneOf(['fadeInOut', 'toggle', 'toggleFadeInOut', 'zoomInOut']).isRequired,
+  show: PropTypes.bool.isRequired,
   tag: PropTypes.oneOf(['div', 'figure', 'nav', 'ul']),
 };
 
