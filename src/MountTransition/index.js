@@ -8,31 +8,24 @@ function MountTransition (props) {
     children,
     className,
     preset,
-    show,
-    tag,
+    isMounted,
   } = props;
   return (
     <Transition
       enter = {presets[preset].atEnter}
       from = {presets[preset].atFrom}
       initial = {presets[preset].atInitial}
-      items = {show}
+      items = {isMounted}
       leave = {presets[preset].atLeave}
       native = {true}
     >
-      {(isShowing) => (isShowing
-        ? (style) => {
-          if (tag === 'ul') {
-            return <animated.ul className = {className} style = {style}>{children}</animated.ul>;
-          } else if (tag === 'nav') {
-            return <animated.nav className = {className} style = {style}>{children}</animated.nav>;
-          } else if (tag === 'figure') {
-            return <animated.figure className = {className} style = {style}>{children}</animated.figure>;
-          } else {
+      {(isShowing) => (
+          isShowing ?
+          (style) => {
             return <animated.div className = {className} style = {style}>{children}</animated.div>;
           }
-        }
-        : null)
+          : null
+        )
       }
     </Transition>
   );
@@ -41,13 +34,8 @@ function MountTransition (props) {
 MountTransition.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
-  preset: PropTypes.oneOf(['fadeInOut', 'toggle', 'toggleFadeInOut', 'zoomInOut']).isRequired,
-  show: PropTypes.bool.isRequired,
-  tag: PropTypes.oneOf(['div', 'figure', 'nav', 'ul']),
-};
-
-MountTransition.defaultProps = {
-  tag: 'div',
+  preset: PropTypes.oneOf(['fade', 'slideTop', 'verticalAccordion', 'zoom']).isRequired,
+  isMounted: PropTypes.bool.isRequired,
 };
 
 export default MountTransition;

@@ -1,5 +1,5 @@
 export const presets = {
-  fadeInOut: {
+  fade: {
     atEnter: {opacity: 1},
     atFrom: {opacity: 0},
     atLeave: {opacity: 0},
@@ -9,13 +9,13 @@ export const presets = {
     atFrom: {transform: 'translateY(-100%)'},
     atLeave: {transform: 'translateY(-100%)'},
   },
-  toggle: {
+  verticalAccordion: {
     atEnter: {height: '100%'},
     atFrom: {height: '0%'},
     atInitial: {height: '0%'},
     atLeave: {height: '0%'},
   },
-  zoomInOut: {
+  zoom: {
     atEnter: {transform: 'scale(1)'},
     atFrom: {transform: 'scale(0)'},
     atLeave: {transform: 'scale(0)'},
