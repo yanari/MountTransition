@@ -1,3 +1,5 @@
+import './App.css';
+
 import React, {useState} from 'react';
 import MountTransition from './MountTransition/index';
 
@@ -5,7 +7,8 @@ function App() {
   const [open, setOpen] = useState(false);
   return (
     <div className="App">
-      <MountTransition show = {open} preset = "fadeInOut">
+      <button onClick = {() => setOpen(!open)}>{open ? 'CLOSE' : 'OPEN'}</button>
+      <MountTransition isMounted = {open} preset = "slideTop">
         <header className="App-header">
           <p>
             Edit <code>src/App.js</code> and save to reload.
@@ -20,7 +23,6 @@ function App() {
           </a>
         </header>
       </MountTransition>
-      <button onClick = {() => setOpen(!open)}>a</button>
     </div>
   );
 }

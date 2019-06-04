@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {animated, Transition} from 'react-spring/renderprops';
+import {animated, useTransition} from 'react-spring';
 import {presets} from './presets';
 
 function MountTransition (props) {
@@ -10,31 +10,36 @@ function MountTransition (props) {
     preset,
     isMounted,
   } = props;
-  return (
-    <Transition
-      enter = {presets[preset].atEnter}
-      from = {presets[preset].atFrom}
-      initial = {presets[preset].atInitial}
-      items = {isMounted}
-      leave = {presets[preset].atLeave}
-      native = {true}
-    >
-      {(isShowing) => (
-          isShowing ?
-          (style) => {
-            return <animated.div className = {className} style = {style}>{children}</animated.div>;
-          }
-          : null
-        )
-      }
-    </Transition>
-  );
+  const transitions = useTransition(isMounted, (isMountedKey) => {
+    return isMountedKey;
+  }, {
+    enter: presets[preset].atEnter,
+    from: presets[preset].atFrom,
+    initial: presets[preset].atInitial,
+    leave: presets[preset].atLeave,
+  });
+  return transitions.map(({item, key, props}) => {
+    return item ? (
+      <animated.div
+        className = {className}
+        key = {key}
+        style = {props}
+      >
+        {children}
+      </animated.div>
+    ) : null;
+  });
 }
 
 MountTransition.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
-  preset: PropTypes.oneOf(['fade', 'slideTop', 'verticalAccordion', 'zoom']).isRequired,
+  preset: PropTypes.oneOf([
+    'fade',
+    'slideTop',
+    'verticalAccordion',
+    'zoom',
+  ]).isRequired,
   isMounted: PropTypes.bool.isRequired,
 };
 
