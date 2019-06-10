@@ -4,6 +4,11 @@ export const presets = {
     atFrom: {opacity: 0},
     atLeave: {opacity: 0},
   },
+  fadeAndZoom: {
+    atEnter: {opacity: 1, transform: 'scale(1)'},
+    atFrom: {opacity: 0, transform: 'scale(0)'},
+    atLeave: {opacity: 0, transform: 'scale(0)'},
+  },
   slideTop: {
     atEnter: {transform: 'translateY(0%)'},
     atFrom: {transform: 'translateY(-100%)'},

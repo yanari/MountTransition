@@ -36,6 +36,7 @@ MountTransition.propTypes = {
   className: PropTypes.string,
   preset: PropTypes.oneOf([
     'fade',
+    'fadeAndZoom',
     'slideTop',
     'verticalAccordion',
     'zoom',
