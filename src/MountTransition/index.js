@@ -9,6 +9,7 @@ function MountTransition (props) {
     className,
     preset,
     isMounted,
+    ...rest,
   } = props;
   const transitions = useTransition(isMounted, (isMountedKey) => {
     return isMountedKey;
@@ -21,6 +22,7 @@ function MountTransition (props) {
   return transitions.map(({item, key, props}) => {
     return item ? (
       <animated.div
+        {...rest}
         className = {className}
         key = {key}
         style = {props}
