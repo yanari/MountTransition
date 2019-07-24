@@ -20,6 +20,12 @@ export const presets = {
     atInitial: {height: '0%'},
     atLeave: {height: '0%'},
   },
+  verticalAccordionVh: {
+    atEnter: {height: '100vh'},
+    atFrom: {height: '0vh'},
+    atInitial: {height: '0vh'},
+    atLeave: {height: '0vh'},
+  },
   zoom: {
     atEnter: {transform: 'scale(1)'},
     atFrom: {transform: 'scale(0)'},

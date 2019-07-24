@@ -41,6 +41,7 @@ MountTransition.propTypes = {
     'fadeAndZoom',
     'slideTop',
     'verticalAccordion',
+    'verticalAccordionVh',
     'zoom',
   ]).isRequired,
   isMounted: PropTypes.bool.isRequired,
